@@ -1,0 +1,506 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap");
+
+@mixin font-config($fz, $fw, $color) {
+    font-size: $fz;
+    font-weight: $fw;
+    color: $color;
+}
+
+$red: #ff3344;
+$green: #2fefb1;
+$blue: #4857ec;
+$yellow: #f7e36d;
+$text: #8a94a6;
+
+/*GLOBAL STYLES*/
+html,
+body {
+    font-family: "Rubik", sans-serif;
+    color: black;
+    height: 100%;
+    background-color: #f6f7fb;
+}
+
+svg {
+    margin-left: 1em;
+}
+
+.content {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.btn {
+    @include font-config(1em, bold, white);
+    background-color: $blue;
+    border-radius: 3px;
+    padding: 13px 27px;
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+    height: fit-content;
+}
+
+.title {
+    @include font-config(20px, 500, $blue);
+}
+
+.about {
+    @include font-config(48px, bold, black);
+    margin: 24px 0;
+}
+
+.text {
+    @include font-config(18px, 400, black);
+}
+
+/*BURGER MENU*/
+.hamburger {
+    top: 7%;
+    width: 50px;
+    height: 6px;
+    background: #5f5f5f;
+    position: absolute;
+    transition: 0.5s;
+    &:before {
+        top: -16px;
+    }
+    &:after {
+        top: 16px;
+    }
+}
+
+.icon-one {
+    display: none;
+    width: 50px;
+    height: 100px;
+    cursor: pointer;
+    &.active-one .hamburger-one {
+        background: rgba(0, 0, 0, 0);
+    }
+    &.active-one .hamburger-one:before {
+        top: 0;
+        transform: rotate(45deg);
+        background: #5f5f5f;
+    }
+    &.active-one .hamburger-one:after {
+        top: 0;
+        transform: rotate(135deg);
+        background: #5f5f5f;
+    }
+}
+
+.hamburger-one:before,
+.hamburger-one:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background: inherit;
+    transition: 0.5s;
+}
+
+/*CONTENT*/
+.header {
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__name {
+        @include font-config(2em, 900, black);
+    }
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex: 0 1 52%;
+        font-weight: 500;
+    }
+    &__link {
+        text-decoration: none;
+        color: black;
+        &.vector::after {
+            text-decoration: none;
+            background-color: $red;
+            height: 3px;
+            content: "";
+            display: flex;
+        }
+    }
+    &__title {
+        @include font-config(70px, bold, black);
+    }
+    span.vector {
+        text-decoration: underline;
+        text-decoration-color: $red;
+    }
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__info {
+        max-width: 370px;
+    }
+    &__title {
+        margin: 0;
+    }
+    .text {
+        margin: 5% 0;
+    }
+    &__decoration {
+        width: 46%;
+    }
+    &__ellipse {
+        position: absolute;
+        & > div {
+            border-radius: 50%;
+            position: relative;
+        }
+        &_yellow {
+            display: none;
+            width: 18px;
+            height: 18px;
+            background-color: $yellow;
+        }
+    }
+    &__img {
+        width: 100%;
+        animation: site-start;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+}
+@keyframes site-start {
+    0% {
+        transform: translateY(4em);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.partners {
+    transform: translateY(-112px);
+    &__title {
+        font-weight: 400;
+        color: $text;
+        text-align: center;
+    }
+    &__content {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1010px;
+    }
+    &__icon {
+        & > img {
+            max-width: 100%;
+            min-width: 20%;
+        }
+    }
+}
+.features {
+    margin-top: 5%;
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        padding: 100px 0;
+    }
+    &__content {
+        display: grid;
+        grid-template-columns: 35% 35%;
+        justify-content: end;
+        grid-column-gap: 8%;
+        grid-row-gap: 40px;
+    }
+    &__item {
+        flex: 0 1 50%;
+    }
+}
+.portfolio {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__content {
+        padding: 80px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item {
+        width: 30%;
+        &-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    &__game-img {
+        width: 100%;
+    }
+    &__title {
+        @include font-config(24px, 500, black);
+    }
+    &__text {
+        @include font-config(18px, 400, $text);
+    }
+}
+.testimonial {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .about {
+            margin-bottom: 0;
+        }
+    }
+    &__link {
+        text-decoration: none;
+    }
+    &__content {
+        background-image: url(../src/testimonial/map_bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        & > div {
+            display: flex;
+            justify-content: space-between;
+            padding: 90px 0;
+        }
+    }
+    &__item {
+        background-color: #fff;
+        padding: 1em;
+        border-radius: 10px;
+        flex: 0 1 45%;
+        &-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .text {
+            font-size: 16px;
+        }
+    }
+    &__more-info {
+        @include font-config(18px, bold, $blue);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 200px;
+    }
+    &__user-name {
+        @include font-config(18px, 500, black);
+    }
+    &__user-status {
+        @include font-config(1em, 400, $text);
+    }
+}
+.team {
+    &__content {
+        padding: 80px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item {
+        width: 30%;
+        & > div {
+            text-align: center;
+        }
+    }
+    &__text {
+        @include font-config(18px, 400, $text);
+    }
+    &__all {
+        @include font-config(18px, bold, $blue);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+    }
+    &__img {
+        width: 100%;
+    }
+}
+.footer {
+    padding: 5%;
+    background-color: #fff;
+    a {
+        text-decoration: none;
+        margin-bottom: 1em;
+    }
+    &__container {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__link {
+        text-decoration: none;
+    }
+    &__social {
+        margin: 170px 0 70px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__meta {
+        flex: 0 1 20%;
+    }
+    &__nav {
+        flex: 0 1 65%;
+        display: flex;
+        justify-content: space-between;
+        &-title {
+            @include font-config(24px, bold, black);
+        }
+        &-link {
+            @include font-config(20px, 400, $text);
+        }
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/*ADAPTIV*/
+@media (max-width: 1138px) {
+    .header {
+        &__title {
+            font-size: 59px;
+        }
+    }
+}
+@media (max-width: 992px) {
+    .partners {
+        transform: unset;
+    }
+    .header {
+        &__info {
+            max-width: 310px;
+        }
+        &__title {
+            font-size: 47px;
+        }
+    }
+    .footer {
+        padding: 0 1%;
+        &__meta {
+            flex: 0 1 100%;
+            width: inherit;
+            flex-direction: row;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &__nav {
+            display: none;
+        }
+        &__social {
+            margin: 0%;
+        }
+        a {
+            margin-bottom: 0;
+        }
+    }
+}
+@media (max-width: 768px) {
+    .about {
+        font-size: 30px;
+    }
+
+    .header {
+        &__content {
+            justify-content: center;
+        }
+        &__decoration {
+            display: none;
+        }
+        &__info {
+            text-align: center;
+            & > .btn {
+                margin: 0 auto;
+            }
+        }
+        &__nav {
+            display: none;
+        }
+        .icon-one {
+            display: block;
+        }
+    }
+
+    .partners__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > img {
+            max-width: 70%;
+        }
+    }
+
+    .testimonial {
+        &__content {
+            > div:first-child {
+                flex-direction: column;
+                > div:first-child {
+                    margin-bottom: 1em;
+                }
+            }
+            background-image: none;
+        }
+        &__info {
+            flex: 0 1 100%;
+        }
+        .raw-btn {
+            display: none;
+        }
+    }
+}
+@media (max-width: 480px) {
+    .features {
+        &__container {
+            flex-direction: column;
+        }
+        &__content {
+            grid-template-columns: 1fr 1fr;
+        }
+        &__item {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+        }
+    }
+    .portfolio {
+        &__content {
+            flex-direction: column;
+        }
+        &__item {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    .team {
+        &__content {
+            flex-direction: column;
+        }
+        &__item {
+            width: 100%;
+        }
+    }
+    .footer {
+        &__social {
+            display: none;
+        }
+    }
+    .preview {
+        text-align: center;
+    }
+    .raw-btn {
+        display: none;
+    }
+}
